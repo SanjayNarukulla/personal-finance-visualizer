@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SanjayNarukulla/personal-finance-visualizer/static/css/main.86434bc5.css",
+    "main.js": "/SanjayNarukulla/personal-finance-visualizer/static/js/main.aaf53709.js",
+    "index.html": "/SanjayNarukulla/personal-finance-visualizer/index.html",
+    "main.86434bc5.css.map": "/SanjayNarukulla/personal-finance-visualizer/static/css/main.86434bc5.css.map",
+    "main.aaf53709.js.map": "/SanjayNarukulla/personal-finance-visualizer/static/js/main.aaf53709.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86434bc5.css",
+    "static/js/main.aaf53709.js"
+  ]
+}
