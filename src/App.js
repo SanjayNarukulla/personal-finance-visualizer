@@ -1,23 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import TransactionForm from "./components/TransactionForm";
+import TransactionList from "./components/TransactionList";
+import Dashboard from "./components/Dashboard";
+import { useTransactions } from "./hooks/useTransactions";
+import "./App.css"; 
 
 function App() {
+  const { transactions, addTransaction, filteredTransactions, setFilter } =
+    useTransactions();
+  const [activeTab, setActiveTab] = useState("dashboard");
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <h1 className="app-title">Personal Finance Tracker</h1>
+
+      <div className="tabs">
+        <div
+          className={`tab ${activeTab === "dashboard" ? "active" : ""}`}
+          onClick={() => handleTabChange("dashboard")}
         >
-          Learn React
-        </a>
-      </header>
+          Dashboard
+        </div>
+        <div
+          className={`tab ${activeTab === "transactionForm" ? "active" : ""}`}
+          onClick={() => handleTabChange("transactionForm")}
+        >
+          Add Transaction
+        </div>
+        <div
+          className={`tab ${activeTab === "transactionList" ? "active" : ""}`}
+          onClick={() => handleTabChange("transactionList")}
+        >
+          Transaction List
+        </div>
+      </div>
+
+      
+      <div className="main-content">
+        {activeTab === "dashboard" && <Dashboard transactions={transactions} />}
+        {activeTab === "transactionForm" && (
+          <TransactionForm addTransaction={addTransaction} />
+        )}
+        {activeTab === "transactionList" && (
+          <TransactionList
+            transactions={filteredTransactions}
+            setFilter={setFilter}
+          />
+        )}
+      </div>
     </div>
   );
 }
